@@ -1,0 +1,32 @@
+<h1> Post a new song! </h1>
+<hr/>
+
+<% if @songs.errors.any? %>
+  <div>
+    <strong>Some issues with your inputs, please fix them:</strong>
+    <ul>
+      <% @songs.errors.full_messages.each do |songs| %>
+        <li><%= songs %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<form method="post" action="/songs">
+  <div>
+    <label>Title:</label>
+    <input type="text" name="title" value="<%= @songs.title %>" placeholder="Enter song title...">
+  </div>
+  <div>
+    <label>Author:</label>
+    <input type="text" name="author" value="<%= @songs.author %>" placeholder="Enter author ...">
+  </div>
+  <div>
+    <label>URL:</label>
+    <input type="url" name="url" value="<%= @songs.url %>" placeholder="Enter URL...">
+  </div>
+  <div>
+    <input type="submit" value="Submit">
+  </div>
+</form>
