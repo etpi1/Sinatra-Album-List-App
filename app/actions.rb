@@ -30,3 +30,23 @@ post '/songs' do
     erb :'songs/new'
   end
 end
+
+get '/users/new' do
+  erb :'users/new'
+end
+
+post '/users/new' do
+  @user = User.new(
+    email: params[:email],
+    username: params[:username],
+    password:  params[:password]
+    )
+  if @user.save
+    redirect '/songs'
+  else
+    erb :'users/new'
+  end
+end
+
+
+
